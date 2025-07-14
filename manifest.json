@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Hide Recommended Posts",
+  "description": "Hides recommended Facebook posts. Shows fallback warning if inactive.",
+  "version": "1.0",
+  "permissions": ["storage"],
+  "host_permissions": ["https://www.facebook.com/*"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon-disabled16.png",
+      "48": "icons/icon-disabled48.png",
+      "128": "icons/icon-disabled128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.facebook.com/*"],
+      "js": ["inject.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
